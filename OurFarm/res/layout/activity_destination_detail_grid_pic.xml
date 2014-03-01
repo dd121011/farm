@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/LinearLayout_toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/title_activity_detail_pic"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map" />
+    </LinearLayout>
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+	    android:id="@+id/grid_view"
+	    android:layout_below="@+id/LinearLayout_toppanel"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:numColumns="auto_fit"
+	    android:verticalSpacing="1dp"
+	    android:horizontalSpacing="1dp"
+	    android:columnWidth="150dp"
+	    android:stretchMode="columnWidth"
+	    android:gravity="center_horizontal"
+	/>
+
+</RelativeLayout>

@@ -1,0 +1,116 @@
+<% include ../header.html %>
+
+  <!-- Subhead
+  ================================================== -->
+  <header class="jumbotron subhead" id="overview">
+	<div class="container">
+	  <h1>Struts2</h1>
+	  <p class="lead">相关内容：<a href='#'>InAction</a>&nbsp;&nbsp;&nbsp;<a href='#'>源代码</a></p>
+	</div>
+  </header>
+  <div class="container">
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> 导航</a></li>
+          <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> 拦截器</a></li>
+          <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> OGNL</a></li>
+          <li><a href="#navs"><i class="icon-chevron-right"></i> struts控件</a></li>
+          <li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> 国际化</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+        <!-- Dropdowns
+        ================================================== -->
+        <section id="dropdowns">
+          <div class="page-header">
+            <h1>导航功能</h1>
+          </div>
+          <h2>例子</h2>
+          <p>Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown JavaScript plugin</a>.</p>
+          <div class="bs-docs-example">
+            <div class="dropdown clearfix">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                <li><a tabindex="-1" href="#">Action</a></li>
+                <li><a tabindex="-1" href="#">Another action</a></li>
+                <li><a tabindex="-1" href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div>
+          <pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="divider"&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+        </section>
+        <!-- Button Groups
+        ================================================== -->
+        <section id="buttonGroups">
+          <div class="page-header">
+            <h1>拦截器</h1>
+          </div>
+        </section>
+        <!-- Split button dropdowns
+        ================================================== -->
+        <section id="buttonDropdowns">
+          <div class="page-header">
+            <h1>OGNL</h1>
+          </div>
+          <h2>Overview and examples</h2>
+          <p>Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
+        </section>
+      
+        <!-- Nav, Tabs, & Pills
+        ================================================== -->
+        <section id="navs">
+          <div class="page-header">
+            <h1>struts控件</h1>
+          </div>
+        </section>
+      
+        <!-- Breadcrumbs
+        ================================================== -->
+        <section id="breadcrumbs">
+          <div class="page-header">
+            <h1>国际化 <small></small></h1>
+          </div>
+
+          <h2>Examples</h2>
+          <p>A single example shown as it might be displayed across multiple pages.</p>
+          <div class="bs-docs-example">
+            <ul class="breadcrumb">
+              <li class="active">Home</li>
+            </ul>
+            <ul class="breadcrumb">
+              <li><a href="#">Home</a> <span class="divider">/</span></li>
+              <li class="active">Library</li>
+            </ul>
+            <ul class="breadcrumb" style="margin-bottom: 5px;">
+              <li><a href="#">Home</a> <span class="divider">/</span></li>
+              <li><a href="#">Library</a> <span class="divider">/</span></li>
+              <li class="active">Data</li>
+            </ul>
+          </div>
+<pre class="prettyprint linenums">
+&lt;ul class="breadcrumb"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;Data&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+        </section>
+      </div>
+    </div>
+  </div>
+  
+
+<% include ../footer.html %>

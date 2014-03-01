@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 我的收藏 title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/more_advise_to_us"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map" />
+                
+    </LinearLayout>
+    
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/toppanel" 
+        android:background="#EEEEEE">
+    
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:scrollbars="vertical"
+	         >
+	        
+	        <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical"
+		        android:scrollbars="vertical">
+		        
+	            <TextView
+		            android:id="@+id/TextView_more_feedback_title"
+		            android:layout_width="300dp"
+		            android:layout_height="60dp"
+		            android:layout_marginLeft="10dp"
+		            android:paddingBottom="5dp"
+		            android:paddingLeft="5dp"
+		            android:paddingTop="10dp"
+		            android:text="@string/feedback_title"
+		            android:textSize="17sp" />
+		        
+	            <EditText
+				    android:id="@+id/editFeedbackMsg"
+				    android:layout_width="fill_parent"
+				    android:layout_height="200dip"
+				    android:inputType="textMultiLine"
+				    android:background="@drawable/activity_more_bg" 
+				    android:layout_marginTop="15dp"
+	                android:layout_marginLeft="10dp"
+	                android:layout_marginRight="10dp"
+	                android:padding="10dp"
+	                android:gravity="top"
+	                android:maxLength="200"
+	                android:hint="@string/editFeedbackMsg">
+				</EditText>  
+		    </LinearLayout>
+		    
+	        <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical"
+		        android:scrollbars="vertical">
+		        
+		        <EditText
+				    android:id="@+id/editFeedbackContactWay"
+				    android:layout_width="fill_parent"
+				    android:layout_height="40dip"
+				    android:inputType="textMultiLine"
+				    android:background="@drawable/activity_more_bg" 
+				    android:layout_marginTop="30dp"
+	                android:layout_marginLeft="10dp"
+	                android:layout_marginRight="10dp"
+	                android:padding="10dp"
+	                android:maxLength="50"
+	                android:hint="@string/editFeedbackContactWay">
+				</EditText> 
+		    </LinearLayout>
+		    
+	        <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical"
+		        android:scrollbars="vertical">
+	            <Button
+		            android:id="@+id/feedbackButton"
+		            android:layout_width="fill_parent"
+		            android:layout_height="40dp"
+		            android:layout_marginTop="40dp"
+		            android:layout_marginLeft="10dp"
+		            android:layout_marginRight="10dp"
+		            android:background="@drawable/home_top"
+		            android:textColor="@color/white"
+		            android:textSize="18sp"
+		            android:text="@string/feedbackButton" />
+	        </LinearLayout>
+	
+	    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

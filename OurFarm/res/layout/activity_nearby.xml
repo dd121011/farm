@@ -1,0 +1,182 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/title_activity_nearby"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map"
+            android:src="@drawable/button_map" />
+    </LinearLayout>
+
+    <!-- 底部工具栏 -->
+    <RelativeLayout
+        android:id="@+id/panelBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home_bottom"
+        android:baselineAligned="false">
+        
+        
+        <com.f5.ourfarm.util.TextProgressBar  
+	        android:id="@+id/textprogressbar"  
+	        style="?android:attr/progressBarStyleHorizontal"  
+	        android:layout_width="fill_parent"  
+	        android:layout_height="30dp"
+	        android:paddingLeft="1dp"
+			android:visibility="gone"
+	    />
+        
+        <TextView
+            android:id="@+id/TextView_nearby_local_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="8dp"
+            android:text="@string/detail_location_address"
+            android:textColor="@color/white"
+            android:textSize="12sp" 
+            android:visibility="gone"/>
+        
+        <ImageView
+            android:id="@+id/ImageView_destination_refresh"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp"
+            android:contentDescription="@string/common_refresh"
+            android:src="@drawable/refresh" />
+        
+    </RelativeLayout>
+
+    <!-- 工具栏 -->
+    <RelativeLayout
+        android:id="@+id/spinner"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="34dp"
+        android:layout_below="@+id/toppanel"
+        android:background="@drawable/spinner_bg" >
+
+        <Spinner 
+	        android:id="@+id/spinner_nearby_distance"
+			android:layout_marginLeft="1dp"
+			android:background="@drawable/near_distance_list"
+			android:layout_width="95dp"
+			android:layout_height="28dp"/>
+        
+        <ImageView
+            android:id="@+id/spinner_nearby_distance_right"
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:paddingTop="2dp"
+            android:layout_toRightOf="@+id/spinner_nearby_distance"
+            android:contentDescription="@string/common_partition_v_live"
+            android:src="@drawable/partition_v_line" />
+        
+        <ImageView
+            android:id="@+id/spinner_nearby_sort_left"
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:paddingTop="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/spinner_nearby_sort"
+            android:contentDescription="@string/common_partition_v_live"
+            android:src="@drawable/partition_v_line" />
+
+        <Spinner
+            android:id="@+id/spinner_nearby_sort"
+            android:layout_width="95dp"
+            android:layout_height="28dp"
+            android:background="@drawable/near_distance_list"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <!-- loadingbar -->
+    <include 
+        android:id="@+id/nearby_loadingbar"
+        layout="@layout/listfooter"/>
+    
+    <!-- 
+    	<ScrollView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/panelBottom"
+	        android:layout_below="@+id/spinner" >
+	
+	        <LinearLayout
+	            android:id="@+id/ListView_main"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	        </LinearLayout>
+	    </ScrollView>
+	     -->
+    <com.f5.ourfarm.layout.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/main_pull_refresh_view"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/panelBottom"
+	    android:layout_below="@+id/spinner"
+	    android:orientation="vertical" >
+	    <ScrollView
+	        android:id="@+id/scrollview"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" >
+	
+	        <LinearLayout
+	            android:id="@+id/ListView_main"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	        </LinearLayout>
+	        <!--  
+	        <LinearLayout
+	            android:id="@+id/Upload_To_Farmhome"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	            <TextView
+	                android:id="@+id/TextView_loading_end"
+	                android:layout_width="fill_parent"
+	                android:layout_height="20dp"
+	                android:paddingLeft="10dp"
+	                android:text="所查询数据已全部加载"
+	                android:textSize="10sp" />
+	        </LinearLayout>
+	        -->
+	    </ScrollView>
+	</com.f5.ourfarm.layout.PullToRefreshView>
+</RelativeLayout>

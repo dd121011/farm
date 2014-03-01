@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/button_map"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+        
+        <ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map" />
+    </LinearLayout>
+
+    <!-- 底部工具栏 
+    <RelativeLayout
+        android:id="@+id/panelBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home_bottom"
+        android:baselineAligned="false"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/ListView_destination_hot"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="地址xxx"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/ListView_destination_pic"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"
+            android:contentDescription="@string/common_refresh"
+            android:src="@drawable/refresh" />
+    </RelativeLayout>
+    -->
+    
+    <!-- 工具栏 
+    <RelativeLayout
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="24dp"
+        android:layout_below="@+id/toppanel"
+        android:background="@drawable/spinner_bg"
+        android:orientation="vertical" >
+
+        <Spinner
+            android:id="@+id/spinner_nearby_distance"
+            android:layout_width="95dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="1dp"
+            android:background="@drawable/near_distance_list" />
+
+        <ImageView
+            android:id="@+id/spinner_nearby_distance_right"
+            android:layout_width="4dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@+id/spinner_nearby_distance"
+            android:contentDescription="@string/common_partition_v_live"
+            android:paddingTop="2dp"
+            android:src="@drawable/partition_v_line" />
+
+        <ImageView
+            android:id="@+id/spinner_nearby_sort_left"
+            android:layout_width="4dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/spinner_nearby_sort"
+            android:contentDescription="@string/common_partition_v_live"
+            android:paddingTop="2dp"
+            android:src="@drawable/partition_v_line" />
+
+        <Spinner
+            android:id="@+id/spinner_nearby_sort"
+            android:layout_width="95dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/near_distance_list" />
+    </RelativeLayout>
+    -->
+
+    <!-- Baidu Map -->
+    <com.baidu.mapapi.MapView
+        android:id="@+id/bmapsView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+       	android:layout_below="@+id/toppanel" 
+        android:clickable="true" />
+
+</RelativeLayout>

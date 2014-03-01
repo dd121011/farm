@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout_area"
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:orientation="vertical" >
+    <!-- 区域显示 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="25dp" >
+        <TextView
+            android:id="@+id/region_name"
+            android:layout_width="275dp"
+            android:layout_height="25dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="5dp"
+            android:text="昌平"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_area_right_arrows_1"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/common_arrows"
+            android:src="@drawable/home_right_arrows" />
+    </LinearLayout>
+</LinearLayout>

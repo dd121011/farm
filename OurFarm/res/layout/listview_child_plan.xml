@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ListView_1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <!-- 计划子项 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp" >
+
+        <ImageView
+            android:id="@+id/ImageView_plan_pic"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:contentDescription="@string/detail_favorites"
+            android:src="@drawable/home_placeholder_pic" />
+
+        <LinearLayout
+            android:id="@+id/ListView_right"
+            android:layout_width="220dp"
+            android:layout_height="80dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/ListView_plan_name"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="10dp"
+                android:text="青龙峡"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="20dp" >
+
+                <RatingBar
+                    android:id="@+id/ratingBar_plan_sroce"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:numStars="5"
+                    android:rating="4" />
+
+                <TextView
+                    android:id="@+id/ListView_plan_price"
+                    android:layout_width="120dp"
+                    android:layout_height="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="门票：￥20"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ListView_plan_hot"
+                android:layout_width="220dp"
+                android:layout_height="20dp"
+                android:paddingLeft="10dp"
+                android:text=""
+                android:textSize="8sp" />
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="20dp" >
+
+                <TextView
+                    android:id="@+id/ListView_plan_characteristic"
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="延庆 风景/乘船xxxxxxxxxxx"
+                    android:textSize="8sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="5dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/common_partition_h_live"
+            android:src="@drawable/partition_h_line" />
+    </LinearLayout>
+
+</LinearLayout>

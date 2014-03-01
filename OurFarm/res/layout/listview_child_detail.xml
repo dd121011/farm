@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/LinearLayout_eat_drink"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dp" >
+
+                    <TextView
+                        android:id="@+id/TextView_detail_around_farm"
+                        android:layout_width="250dp"
+                        android:layout_height="25dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:text="吃喝"
+                        android:textSize="10sp" />
+                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/more_around_farm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_recommend_farm2"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_toRightOf="@+id/RelativeLayout_recommend_farm1"
+	                    android:layout_marginLeft="10dp"
+	                    android:visibility="visible">
+	                    <ImageView
+	                        android:id="@+id/ImageView_recommend_farm_pic2"
+	                        android:layout_width="50dp"
+	                        android:layout_height="50dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:contentDescription="@string/detail_favorites"
+	                        android:src="@drawable/home_placeholder_pic" />
+	
+	                 
+                    </RelativeLayout>
+              
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView_detaim"
+                        android:layout_width="250dp"
+                        android:layout_height="25dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:text="描述"
+                        android:textSize="10sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/common_partition_h_live"
+                        android:src="@drawable/partition_h_line" />
+                </LinearLayout>
+            </LinearLayout>

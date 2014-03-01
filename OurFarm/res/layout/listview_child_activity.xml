@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ListView_1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_activity"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="6dp" >
+
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+	        <TextView
+	            android:id="@+id/TextView_activity_name"
+	            android:layout_width="fill_parent"
+	            android:layout_height="20dp"
+	            android:paddingLeft="10dp"
+	            android:text="大兴西瓜节"
+	            android:textSize="15sp" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/LinearLayout_activity_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/TextView_activity_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="#33CCFF"
+                android:text="举办时间："
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/TextView_activity_startime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#33CCFF"
+                android:text="2013-02-03" 
+                android:textSize="10sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#33CCFF"
+                android:text="~" 
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/TextView_activity_endtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#33CCFF"
+                android:text="2013-02-09" 
+                android:textSize="10sp"/>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" >
+	        <TextView
+	            android:id="@+id/TextView_activity_text"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:paddingLeft="10dp"
+	            android:text="兼有笔记本和平板的功能，携带方便，经常外出可以减轻负担。开机和休眠唤醒速度快，比过去用笔记本好太多了。能满足笔记本的大多数功能，但必需配键盘， 外出携带方便，使用还不多，仍在试用之中"
+	            android:textSize="11sp" />
+        </LinearLayout>
+        
+        <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="5dp" >
+	
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="5dp"
+	            android:layout_marginLeft="20dp"
+	            android:layout_marginRight="20dp"
+	            android:contentDescription="@string/common_partition_h_live"
+	            android:src="@drawable/partition_h_line" />
+	    </LinearLayout>
+        
+        <!-- 地址 -->
+        <LinearLayout
+            android:id="@+id/LinearLayout_detail_map"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="25dp" >
+
+                <ImageView
+                    android:id="@+id/ImageView_activity_map"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/detail_favorites"
+                    android:src="@drawable/detail_map" />
+
+                <TextView
+                    android:id="@+id/TextView_activity_address"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="详细地址xxxxxxx"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="5dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:contentDescription="@string/common_partition_h_live"
+                    android:src="@drawable/partition_h_line" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 电话 -->
+        <LinearLayout
+            android:id="@+id/LinearLayout_activity_tel"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="25dp" >
+
+                <ImageView
+                    android:id="@+id/activity_tel"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/detail_favorites"
+                    android:src="@drawable/detail_tel" />
+
+                <TextView
+                    android:id="@+id/TextView_activity_tel"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="101-87452514"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="5dp"
+                    android:contentDescription="@string/common_arrows"
+                    android:src="@drawable/home_right_arrows" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="5dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:contentDescription="@string/common_partition_h_live"
+                    android:src="@drawable/partition_h_line" />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- 官网  -->
+        <LinearLayout
+            android:id="@+id/LinearLayout_goto_net"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="25dp" >
+
+                <ImageView
+                    android:id="@+id/goto_net"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/detail_favorites"
+                    android:src="@drawable/goto_net_24" />
+
+                <TextView
+                    android:id="@+id/TextView_goto_net"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="去官方看看"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="5dp"
+                    android:contentDescription="@string/common_arrows"
+                    android:src="@drawable/home_right_arrows" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="5dp" >
+
+                <ImageView
+			        android:id="@+id/iv_group_list_bg_divider"
+			        android:layout_width="fill_parent"
+			        android:layout_height="1dp"
+			        android:background="@drawable/line_gray_black"
+			        android:dividerHeight="2dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

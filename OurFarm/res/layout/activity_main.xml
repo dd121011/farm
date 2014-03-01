@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" 
+        android:background="@drawable/home_top">
+
+        <TextView
+            android:id="@+id/TextView_home_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/home_title"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/common_search_input_click"
+            android:layout_width="240dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/search_input"
+            android:gravity="left|center_vertical"
+            android:hint="@string/home_search_hint"
+            android:paddingBottom="3dp"
+            android:paddingLeft="26dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+        
+    </LinearLayout>
+
+    <!-- 底部工具栏 -->
+    <include 
+        android:id="@+id/Layout_home_panelBottom"
+        layout="@layout/footer"/>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/Layout_home_panelBottom"
+        android:layout_below="@id/toppanel"
+        android:background="@color/white" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:scrollbars="vertical" >
+            <LinearLayout android:layout_width="fill_parent"  
+			    android:layout_height="wrap_content" android:orientation="horizontal"  
+			    xmlns:android="http://schemas.android.com/apk/res/android">  
+			      
+			     
+			</LinearLayout> 
+            <!-- 推荐 -->
+            <RelativeLayout
+                android:id="@+id/RelativeLayout_home_recommend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ViewFlipper 
+			        android:id="@+id/flipper_scrollTitle"   
+			        android:layout_gravity="center" 
+			        android:padding="5dip"  
+			        android:layout_width="fill_parent" 
+			        android:layout_height="fill_parent"  
+			        android:layout_margin="0.0dip" 
+			        android:flipInterval="5000"  
+			        android:autoStart="true"
+			        >  
+			          
+			        <TextView   
+			            android:id="@+id/TextView_home_recommend"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="10dp"
+                        android:textColor="#666666"
+                        android:textSize="12sp"  
+			            android:text="推荐信息"/> 
+			    </ViewFlipper> 
+			    <!-- 
+                <TextView
+                    android:id="@+id/TextView_home_recommend"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="40dp"
+                    android:paddingTop="10dp"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+                 -->
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:contentDescription="@string/common_arrows"
+                    android:src="@drawable/home_right_arrows" />
+                
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+		        android:paddingLeft="20dp"
+		        android:paddingRight="20dp"
+                android:orientation="vertical" >
+		        <View 
+		            android:layout_height="2dp" 
+		            android:background="#eeeeee" 
+		            android:layout_width="fill_parent">
+		        </View>
+		    </RelativeLayout>
+            <!-- 附近 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/TextView_home_nearby"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/home_nearby"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- 附近的图标 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_play"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_scenic_spots"
+                        android:src="@drawable/home_destination" />
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_food"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_farm_home"
+                        android:src="@drawable/home_farm" />
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_hotel"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_mountain_villa"
+                        android:src="@drawable/home_mountain_villa" />
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_spherical"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_spherical"
+                        android:src="@drawable/home_farm_produce" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView_home_play"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_scenic_spots"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/TextView_home_food"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_farm_home"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/TextView_home_hotel"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_mountain_villa"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/TextView_home_spherical"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_spherical"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 计划出行 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/TextView_home_plan"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/home_plan"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- 计划出行的图标 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_drive_line"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_drive_line"
+                        android:src="@drawable/home_drive_line" />
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_resort"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_resort"
+                        android:src="@drawable/home_resort" />
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_area_spots"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_area_spots"
+                        android:src="@drawable/home_area_spots" />
+                    
+                    <ImageView
+                        android:id="@+id/ImageView_home_market"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_market"
+                        android:src="@drawable/home_market" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" >
+
+                    <TextView
+                        android:id="@+id/TextView_home_drive_line"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_drive_line"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/TextView_home_resort"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_resort"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/TextView_home_area_spots"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_area_spots"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                    
+                    <TextView
+                        android:id="@+id/TextView_home_market"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_market"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_parent_child"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_parent_child"
+                        android:src="@drawable/home_parent_child" />
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_pick"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_pick"
+                        android:src="@drawable/home_pick" />
+
+                    <ImageView
+                        android:id="@+id/ImageView_home_mountain"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_mountain"
+                        android:src="@drawable/home_mountain" />
+                    
+                    <ImageView
+                        android:id="@+id/ImageView_home_fishing"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/common_fishing"
+                        android:src="@drawable/home_fishing" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" >
+
+                    <TextView
+                        android:id="@+id/TextView_home_parent_child"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_parent_child"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/TextView_home_pick"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_pick"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/TextView_home_mountain"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_mountain"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                    
+                    <TextView
+                        android:id="@+id/TextView_home_fishing"
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:text="@string/common_fishing"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 活动/促销 -->
+            <RelativeLayout
+                android:id="@+id/Layout_home_promote_sales"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/home_bg"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/TextView_home_promote_sales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/common_promote_sales"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/TextView_home_promote_sales_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/home_promote_sales_detail"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/ImageView_home_right_arrows_1"
+                    android:layout_width="14dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:contentDescription="@string/common_arrows"
+                    android:src="@drawable/home_right_arrows" />
+            </RelativeLayout>
+
+            <!-- 爆棚指数 
+            <RelativeLayout
+                android:id="@+id/Layout_home_heat_power"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/home_bg"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/TextView_home_heat_power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/common_heat_power"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/TextView_home_heat_power_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/home_heat_power_detail"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/ImageView_home_right_arrows_2"
+                    android:layout_width="14dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:contentDescription="@string/common_arrows"
+                    android:src="@drawable/home_right_arrows" />
+            </RelativeLayout>
+            -->
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

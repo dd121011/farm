@@ -1,0 +1,268 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+
+        <TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/common_search"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map" />
+    </LinearLayout>
+
+    <!-- 底部工具栏 -->
+
+    <RelativeLayout
+        android:id="@+id/panelBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home_bottom"
+        android:baselineAligned="false"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/ListView_panelBottom"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <!-- 高级查找 -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LinearLayout_accurate_search"
+        android:layout_below="@+id/toppanel"
+        android:orientation="vertical" >
+
+        <!-- 高级查找1 区域选择 -->
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_accurate_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_accurate_area_header"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/TextView_accurate_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:paddingLeft="10dp"
+                    android:text="@string/reminding_select_area" />
+
+                <CheckBox
+                    android:id="@+id/CheckBox_accurate_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/reminding_select_all" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/common_partition_h_live"
+                android:src="@drawable/partition_h_line" />
+
+            <!-- 高级查找 list -->
+
+            <ListView
+                android:id="@+id/ListView_accurate_area"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="0dp" />
+        </LinearLayout>
+
+        <!-- 高级查找 是仅显示经典 -->
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_accurate_classic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LinearLayout_accurate_area"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_accurate_classic_header"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/TextView_accurate_classic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:paddingLeft="10dp"
+                    android:text="@string/reminding_select_classic_only" />
+
+                <CheckBox
+                    android:id="@+id/CheckBox_accurate_classic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/common_partition_h_live"
+                android:src="@drawable/partition_h_line" />
+        </LinearLayout>
+
+        <!-- 高级查找3 label选择 -->
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_accurate_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LinearLayout_accurate_classic"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_accurate_label_header"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/TextView_accurate_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:paddingLeft="10dp"
+                    android:text="@string/reminding_select_label" />
+
+                <CheckBox
+                    android:id="@+id/CheckBox_accurate_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/reminding_select_all" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/common_partition_h_live"
+                android:src="@drawable/partition_h_line" />
+
+            <!-- 高级查找 list -->
+
+            <ListView
+                android:id="@+id/ListView_accurate_label"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="0dp" />
+        </LinearLayout>
+
+        <!-- 高级查找4 数目选择 -->
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_accurate_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LinearLayout_accurate_label"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_accurate_count_header"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/TextView_accurate_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:paddingLeft="10dp"
+                    android:text="@string/reminding_select_return_count" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/common_partition_h_live"
+                android:src="@drawable/partition_h_line" />
+
+            <!-- 高级查找 list -->
+
+            <ListView
+                android:id="@+id/ListView_accurate_count"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="0dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/LinearLayout_accurate_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/panelBottom" >
+
+        <TextView
+            android:id="@+id/TextView_accurate_search"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/activity_buttom"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:text="@string/button_search" />
+    </RelativeLayout>
+
+</RelativeLayout>

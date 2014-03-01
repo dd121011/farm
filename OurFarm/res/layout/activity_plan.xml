@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 计划列表 -->
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/around_farm"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+		
+		<ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map"
+            android:src="@drawable/button_map" />
+
+    </LinearLayout>
+    
+    <!-- 底部工具栏 目的是在数据显示不满一屏的情况下，不显示“上拉加载更多”字样 -->
+    <RelativeLayout
+        android:id="@+id/panelBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:baselineAligned="false">
+    </RelativeLayout>
+
+    <!-- loadingbar -->
+    <include 
+        android:id="@+id/nearby_loadingbar"
+        layout="@layout/listfooter"/>
+    <com.f5.ourfarm.layout.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/main_pull_refresh_view"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/toppanel"
+	    android:layout_above="@+id/panelBottom"
+	    android:orientation="vertical" >
+	    <ScrollView
+	        android:id="@+id/scrollview"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" >
+	
+	        <LinearLayout
+	            android:id="@+id/ListView_main"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	        </LinearLayout>
+	    </ScrollView>
+	</com.f5.ourfarm.layout.PullToRefreshView>
+</RelativeLayout>

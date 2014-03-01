@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ListView_1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TextView_comment_name"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:paddingLeft="10dp"
+            android:text="评论人"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dp" >
+
+            <RatingBar
+                android:id="@+id/ratingBar_comment_sroce"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:numStars="5"
+                android:rating="4" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+         <TextView
+             android:id="@+id/TextView_comment_text"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:paddingLeft="10dp"
+             android:text="评论内容：兼有笔记本和平板的功能，携带方便，经常外出可以减轻负担。开机和休眠唤醒速度快，比过去用笔记本好太多了。能满足笔记本的大多数功能，但必需配键盘， 外出携带方便，使用还不多，仍在试用之中"
+             android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/TextView_comment_time"
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="13-05-05 12:12"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="5dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/common_partition_h_live"
+            android:src="@drawable/partition_h_line" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:orientation="horizontal"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:paddingBottom="25dip"
+    >
+    <RelativeLayout
+        android:id="@+id/Layout_map_my_loc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:gravity="center_horizontal" >
+        
+        <!-- 
+        <ImageView     
+		    android:id="@+id/map_spot_loc_image"  
+		    android:layout_width="match_parent"    
+		    android:layout_height="wrap_content"    
+		    android:src="@drawable/map_my_loc_pop" 
+		    android:contentDescription="@string/detail_location_address"/>  
+        -->
+        <TextView
+            android:id="@+id/TextView_map_spot_loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/map_my_loc_pop"
+            android:text="故此处的应用回调页地址只要"
+            android:textColor="#00BBFF"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    
+</LinearLayout>  
+
+<!--  
+
+        <RelativeLayout
+            android:id="@+id/Layout_home_panelBottom_checkin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal" >
+
+            <ImageView
+                android:id="@+id/ImageView_home_checkin"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/common_checkin"
+                android:src="@drawable/home_checkin" />
+
+            <TextView
+                android:id="@+id/TextView_panelBottom_home_checkin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_horizontal"
+                android:text="@string/common_checkin"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </RelativeLayout>
+        
+        -->

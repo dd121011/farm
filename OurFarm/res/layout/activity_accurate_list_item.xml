@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout_area"
+    android:layout_width="fill_parent"
+    android:layout_height="30dp" >
+
+    <!-- 区域显示 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/home_bg" >
+
+        <TextView
+            android:id="@+id/TextView_item"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:paddingLeft="50dp"
+            android:layout_marginLeft="50dp"
+            android:text="@string/list_item_name" />
+
+        <CheckBox
+            android:id="@+id/CheckBox_item"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
+    </LinearLayout>
+
+</LinearLayout>

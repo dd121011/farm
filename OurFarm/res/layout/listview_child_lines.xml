@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ListView_1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <!-- step name -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="15dp" >
+
+        <TextView
+            android:id="@+id/TextView_step_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingLeft="10dp"
+            android:text="第一站"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/TextView_step_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingLeft="10dp"
+            android:text="青龙峡"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- line -->
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_line"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.0"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/common_partition_h_live"
+            android:src="@drawable/partition_h_line" />
+
+        <TextView
+            android:id="@+id/TextView_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="玩什么，门票价格：云居寺40RMB,石经山15RMB, 百里峡:95RMB；门票价格：云居寺40RMB,石经山15RMB, 百里峡:95RMB门票价格：云居寺40RMB,石经山15RMB, 百里峡:95RMB"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/common_partition_h_live"
+            android:src="@drawable/partition_h_line" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/common_characteristic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/TextView_characteristic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/common_characteristic"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- 图片 -->
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_pic_Grid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </LinearLayout>
+
+    <!-- 周边农家乐 -->
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_get_more_farm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/common_partition_h_live"
+            android:src="@drawable/partition_h_line" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/TextView_around_farm"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/around_farm"
+            android:textSize="8sp" />
+    </LinearLayout>
+
+</LinearLayout>

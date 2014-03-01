@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/common_search_input"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/search_input"
+                android:gravity="left|center_vertical"
+                android:hint="@string/home_search_hint"
+                android:maxLength="12"
+                android:paddingBottom="3dp"
+                android:paddingLeft="26dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/common_search_button_clear"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/search_del"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/common_search_button"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/search_btn"
+            android:text="@string/home_search_label"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- loadingbar -->
+    <include 
+        android:id="@+id/common_search_loadingbar"
+        layout="@layout/listfooter"/>
+
+    <!-- search no result -->
+    <LinearLayout
+        android:id="@+id/common_search_not_find"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/common_search_loadingbar"
+        android:background="#dddddd"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dip"
+        android:visibility="invisible" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_not_find"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <com.f5.ourfarm.layout.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/main_pull_refresh_view"
+	    android:layout_width="wrap_content"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@+id/toppanel"
+	    android:orientation="vertical" > 
+	    <ScrollView
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_below="@+id/toppanel" >
+	
+	        <!-- listview -->
+	        <LinearLayout
+	            android:id="@+id/common_search_result"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="2dp"
+	            android:orientation="vertical" >
+	        </LinearLayout>
+	    </ScrollView>
+	</com.f5.ourfarm.layout.PullToRefreshView>
+
+</RelativeLayout>

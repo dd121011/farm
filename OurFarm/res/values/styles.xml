@@ -1,0 +1,32 @@
+<resources>
+    <style name="AppTheme" parent="android:Theme.Light" />
+    
+    <style name="Widget" />
+    <style name="Widget.QuickAction" parent="@style/Widget" />
+    <style name="Widget.QuickAction.Bar" parent="@style/Widget.QuickAction" />
+    <style name="Widget.QuickAction.Item" parent="@style/Widget.QuickAction">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">#ff333333</item>
+        <item name="android:paddingLeft">10.0dip</item>
+        <item name="android:paddingRight">10.0dip</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:drawablePadding">5.0dip</item>
+    </style>
+    <style name="Widget.QuickAction.Bar.Item" parent="@style/Widget.QuickAction.Item">
+        <item name="android:background">@drawable/quick_action_bar_item</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">80.0dip</item>
+    </style>
+    
+    <style name="Theme.OurFarm" parent="@android:style/Theme.Light">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleSize">45.0dip</item>
+        <item name="android:drawingCacheQuality">auto</item>
+    </style>
+    <style name="Theme.OurFarmNoTitle" parent="@style/Theme.OurFarm">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Theme.OurFarmNoTitle.CustomerBackground" parent="@style/Theme.OurFarmNoTitle">
+        <item name="android:windowBackground">@drawable/welcome_bg</item>
+    </style>
+</resources>

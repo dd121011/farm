@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/LinearLayout_toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/common_mountain_villa"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_write_comment"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_write_comment"
+            android:src="@drawable/comment_48" />
+    </LinearLayout>
+    
+    <!-- loadingbar -->
+    <LinearLayout 
+   		android:id="@+id/loadingbar"
+   		android:orientation="horizontal"
+   		android:layout_width="fill_parent"
+   		android:layout_height="wrap_content"
+   		android:background="#ffffffff"
+   		android:gravity="center"
+   		android:padding="10dip"
+   		android:layout_below="@+id/LinearLayout_toppanel">
+   		<ProgressBar 
+   			android:layout_width="wrap_content" 
+   			android:layout_height="wrap_content"/>
+  			<View 
+  				android:layout_width="10dip" 
+  				android:layout_height="10dip"/>
+   		<TextView 
+   			android:layout_width="wrap_content" 
+   			android:layout_height="wrap_content"
+   			android:textColor="#ff000000"
+   			android:text="载入中..."/>
+    </LinearLayout>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Layout_detail_panelBottom"
+        android:layout_below="@+id/loadingbar"
+        android:background="@color/white"
+        android:layout_marginTop="2dp" >
+        
+        <LinearLayout
+            android:id="@+id/LinearLayout_detail_summary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            <!-- 概要 -->
+            <LinearLayout
+                android:id="@+id/LinearLayout_mountain_villa_summary"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80dp" >
+
+                    <ImageView
+                        android:id="@+id/ImageView_destination_pic"
+                        android:layout_width="100dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="5dp"
+                        android:contentDescription="@string/detail_favorites"
+                        android:src="@drawable/home_placeholder_pic" />
+
+                    <LinearLayout
+                        android:id="@+id/ListView_right"
+                        android:layout_width="220dp"
+                        android:layout_height="80dp"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/ListView_mountain_villa_name"
+                            android:layout_width="fill_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingLeft="10dp"
+                            android:text="马化腾QQ山庄"
+                            android:textSize="12sp" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar_mountain_villa_sroce"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="10dp"
+                            android:numStars="5"
+                            android:rating="4" />
+
+                        <TextView
+                            android:id="@+id/ListView_mountain_villa_price"
+                            android:layout_width="120dp"
+                            android:layout_height="25dp"
+                            android:paddingLeft="10dp"
+                            android:text="人均消费：￥200"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/common_partition_h_live"
+                        android:src="@drawable/partition_h_line" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 地址 -->
+            <LinearLayout
+                android:id="@+id/LinearLayout_detail_map"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dp" >
+
+                    <ImageView
+                        android:id="@+id/ImageView_detail_map"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:contentDescription="@string/detail_favorites"
+                        android:src="@drawable/detail_map" />
+
+                    <TextView
+                        android:id="@+id/TextView_detail_address"
+                        android:layout_width="250dp"
+                        android:layout_height="25dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:text="详细地址xxxxxxx"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginTop="5dp"
+                        android:contentDescription="@string/common_arrows"
+                        android:src="@drawable/home_right_arrows" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/common_partition_h_live"
+                        android:src="@drawable/partition_h_line" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 预定 -->
+            <LinearLayout
+                android:id="@+id/LinearLayout_detail_tel"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dp" >
+
+                    <ImageView
+                        android:id="@+id/detail_tel"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:contentDescription="@string/detail_favorites"
+                        android:src="@drawable/detail_tel" />
+
+                    <TextView
+                        android:id="@+id/TextView_detail_tel"
+                        android:layout_width="250dp"
+                        android:layout_height="25dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:text="101-87452514"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginTop="5dp"
+                        android:contentDescription="@string/common_arrows"
+                        android:src="@drawable/home_right_arrows" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/common_partition_h_live"
+                        android:src="@drawable/partition_h_line" />
+                </LinearLayout>
+            </LinearLayout>
+            
+             <LinearLayout
+                android:id="@+id/LinearLayout_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible" >
+              <!-- 吃喝 -->
+            <LinearLayout
+                android:id="@+id/LinearLayout_eat_drink"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dp" >
+
+                    <TextView
+                        android:id="@+id/TextView_detail_around_farm"
+                        android:layout_width="250dp"
+                        android:layout_height="25dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:text="吃喝"
+                        android:textSize="10sp" />
+                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/more_around_farm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_recommend_farm1"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_alignParentLeft="true"
+	                    android:visibility="visible" >
+	                    <ImageView
+	                        android:id="@+id/ImageView_recommend_farm_pic1"
+	                        android:layout_width="50dp"
+	                        android:layout_height="50dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:contentDescription="@string/detail_favorites"
+	                        android:src="@drawable/home_placeholder_pic" />
+	
+	                    <TextView
+	                        android:id="@+id/TextView_detail_recommend_farm1"
+	                        android:layout_below="@+id/ImageView_recommend_farm_pic1"
+	                        android:layout_width="50dp"
+	                        android:layout_height="25dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:paddingLeft="5dp"
+	                        android:paddingTop="5dp"
+	                        android:text="@string/around_farm"
+	                        android:textSize="8sp" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_recommend_farm2"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_toRightOf="@+id/RelativeLayout_recommend_farm1"
+	                    android:layout_marginLeft="10dp"
+	                    android:visibility="visible">
+	                    <ImageView
+	                        android:id="@+id/ImageView_recommend_farm_pic2"
+	                        android:layout_width="50dp"
+	                        android:layout_height="50dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:contentDescription="@string/detail_favorites"
+	                        android:src="@drawable/home_placeholder_pic" />
+	
+	                    <TextView
+	                        android:id="@+id/TextView_detail_recommend_farm2"
+	                        android:layout_below="@+id/ImageView_recommend_farm_pic2"
+	                        android:layout_width="50dp"
+	                        android:layout_height="25dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:paddingLeft="5dp"
+	                        android:paddingTop="5dp"
+	                        android:text="@string/around_farm"
+	                        android:textSize="8sp" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_recommend_farm3"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_toRightOf="@+id/RelativeLayout_recommend_farm2"
+	                    android:layout_marginLeft="10dp"
+	                    android:visibility="visible" >
+	                    <ImageView
+	                        android:id="@+id/ImageView_recommend_farm_pic3"
+	                        android:layout_width="50dp"
+	                        android:layout_height="50dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:contentDescription="@string/detail_favorites"
+	                        android:src="@drawable/home_placeholder_pic" />
+	
+	                    <TextView
+	                        android:id="@+id/TextView_detail_recommend_farm3"
+	                        android:layout_below="@+id/ImageView_recommend_farm_pic3"
+	                        android:layout_width="50dp"
+	                        android:layout_height="25dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:paddingLeft="5dp"
+	                        android:paddingTop="5dp"
+	                        android:text="@string/around_farm"
+	                        android:textSize="8sp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/common_partition_h_live"
+                        android:src="@drawable/partition_h_line" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 玩乐 -->
+            <LinearLayout
+                android:id="@+id/LinearLayout_play"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dp" >
+
+                    <TextView
+                        android:id="@+id/TextView_detail_play"
+                        android:layout_width="250dp"
+                        android:layout_height="25dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:text="玩乐"
+                        android:textSize="10sp" />
+                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/mountain_villa_play"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_mountain_villa_play1"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_alignParentLeft="true"
+	                    android:visibility="visible" >
+	                    <ImageView
+	                        android:id="@+id/ImageView_mountain_villa_play_pic1"
+	                        android:layout_width="50dp"
+	                        android:layout_height="50dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:contentDescription="@string/detail_favorites"
+	                        android:src="@drawable/home_placeholder_pic" />
+	
+	                    <TextView
+	                        android:id="@+id/TextView_mountain_villa_play_farm1"
+	                        android:layout_below="@+id/ImageView_mountain_villa_play_pic1"
+	                        android:layout_width="50dp"
+	                        android:layout_height="25dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:paddingLeft="5dp"
+	                        android:paddingTop="5dp"
+	                        android:text="@string/around_farm"
+	                        android:textSize="8sp" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_mountain_villa_play2"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_toRightOf="@+id/RelativeLayout_mountain_villa_play1"
+	                    android:layout_marginLeft="10dp"
+	                    android:visibility="visible">
+	                    <ImageView
+	                        android:id="@+id/ImageView_mountain_villa_play_pic2"
+	                        android:layout_width="50dp"
+	                        android:layout_height="50dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:contentDescription="@string/detail_favorites"
+	                        android:src="@drawable/home_placeholder_pic" />
+	
+	                    <TextView
+	                        android:id="@+id/TextView_mountain_villa_play_farm2"
+	                        android:layout_below="@+id/ImageView_mountain_villa_play_pic2"
+	                        android:layout_width="50dp"
+	                        android:layout_height="25dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:paddingLeft="5dp"
+	                        android:paddingTop="5dp"
+	                        android:text="@string/around_farm"
+	                        android:textSize="8sp" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_mountain_villa_play3"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_toRightOf="@+id/RelativeLayout_mountain_villa_play2"
+	                    android:layout_marginLeft="10dp"
+	                    android:visibility="visible" >
+	                    <ImageView
+	                        android:id="@+id/ImageView_mountain_villa_play_pic3"
+	                        android:layout_width="50dp"
+	                        android:layout_height="50dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:contentDescription="@string/detail_favorites"
+	                        android:src="@drawable/home_placeholder_pic" />
+	
+	                    <TextView
+	                        android:id="@+id/TextView_mountain_villa_play_farm3"
+	                        android:layout_below="@+id/ImageView_mountain_villa_play_pic3"
+	                        android:layout_width="50dp"
+	                        android:layout_height="25dp"
+	                        android:layout_marginLeft="5dp"
+	                        android:paddingLeft="5dp"
+	                        android:paddingTop="5dp"
+	                        android:text="@string/around_farm"
+	                        android:textSize="8sp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/common_partition_h_live"
+                        android:src="@drawable/partition_h_line" />
+                </LinearLayout>
+            </LinearLayout>
+             </LinearLayout>
+            
+           
+            
+            <!-- 优惠信息 -->
+            <LinearLayout
+                android:id="@+id/LinearLayout_detail_preferentialInfo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/ListView_preferentialInfo_name"
+                    android:layout_width="250dp"
+                    android:layout_height="15dp"
+                    android:paddingLeft="10dp"
+                    android:text="@string/detail_preferentialInfo"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/TextView_preferentialInfo_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:text="十一期间8折优惠 "
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/common_partition_h_live"
+                        android:src="@drawable/partition_h_line" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/LinearLayout_comment_block"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+	            <!-- 评论loading bar -->
+			    <LinearLayout 
+			   		android:id="@+id/comment_loadingbar"
+			   		android:orientation="horizontal"
+			   		android:layout_width="fill_parent"
+			   		android:layout_height="wrap_content"
+			   		android:background="#ffffffff"
+			   		android:gravity="center"
+			   		android:padding="10dip"
+			   		android:visibility="gone">
+	                <ProgressBar
+	                    android:id="@+id/progressBar_comment"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    style="?android:attr/progressBarStyleSmall" />
+			    </LinearLayout>
+			    <!-- 查找评论失败时的提示 -->
+			    <RelativeLayout 
+			   		android:id="@+id/find_comment_error"
+			   		android:orientation="horizontal"
+			   		android:layout_width="fill_parent"
+			   		android:layout_height="wrap_content"
+			   		android:background="#ffffffff"
+			   		android:gravity="center"
+			   		android:padding="10dip"
+			   		android:visibility="gone" >
+	                <TextView
+	                    android:id="@+id/find_around_comment_error_msg"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="25dp"
+	                    android:layout_centerVertical="true"
+	                    android:layout_marginLeft="5dp"
+	                    android:paddingLeft="5dp"
+	                    android:paddingTop="5dp"
+	                    android:text="@string/no_comment"
+	                    android:textSize="10sp" />
+	                <Button
+	                    android:id="@+id/retry_comment_btn"
+	                    android:layout_width="40dp"
+	                    android:layout_height="20dp"
+	                    android:layout_alignParentRight="true"
+	                    android:layout_centerVertical="true"
+	                    android:layout_marginRight="20dp"
+	                    android:text="@string/common_retry"
+	                    android:background="@drawable/weibosdk_bg_btn"
+	                    android:contentDescription="@string/common_arrows" />
+			    </RelativeLayout>
+			    <!-- 评论内容 -->
+			    <LinearLayout
+			        android:id="@+id/LinearLayout_comment"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical" >
+			
+			        <TextView
+			            android:id="@+id/ListView_comment"
+			            android:layout_width="fill_parent"
+			            android:layout_height="20dp"
+			            android:paddingLeft="10dp"
+			            android:text="点评： "
+			            android:textSize="12sp" />
+			
+			        <LinearLayout
+			            android:layout_width="fill_parent"
+			            android:layout_height="20dp" >
+			
+			            <RatingBar
+			                android:id="@+id/ratingBar_comment_sroce"
+			                style="?android:attr/ratingBarStyleSmall"
+			                android:layout_width="wrap_content"
+			                android:layout_height="20dp"
+			                android:layout_marginLeft="10dp"
+			                android:numStars="5"
+			                android:rating="4" />
+			        </LinearLayout>
+			
+			        <RelativeLayout
+	                    xmlns:android="http://schemas.android.com/apk/res/android"
+						xmlns:tools="http://schemas.android.com/tools"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent">
+			         <TextView
+			             android:id="@+id/TextView_comment_text"
+			             android:layout_width="wrap_content"
+		                 android:layout_height="wrap_content"
+		                 android:paddingLeft="10dp"
+		                 android:paddingRight="10dp"
+		                 android:layout_marginRight="20dp"
+			             android:text="评论内容：兼有笔记本和平板的功能，携带方便，经常外出可以减轻负担。开机和休眠唤醒速度快，比过去用笔记本好太多了。能满足笔记本的大多数功能，但必需配键盘， 外出携带方便，使用还不多，仍在试用之中"
+			             android:textSize="8sp" />
+			        <ImageView
+	                        android:id="@+id/ImageView_detail_right_arrows_4"
+	                        android:layout_width="14dp"
+	                        android:layout_height="14dp"
+	                        android:layout_marginRight="10dp"
+	                        android:layout_alignParentRight="true"
+	                        android:layout_centerVertical="true"
+	                        android:contentDescription="@string/common_arrows"
+	                        android:src="@drawable/home_right_arrows" />
+	                </RelativeLayout>
+			
+			        <LinearLayout
+			            android:layout_width="fill_parent"
+			            android:layout_height="20dp"
+			            android:layout_marginTop="5dp"
+			            android:layout_gravity="center_vertical" >
+			
+			            <TextView
+			                android:id="@+id/TextView_comment_time"
+			                android:layout_width="150dp"
+			                android:layout_height="20dp"
+			                android:paddingLeft="10dp"
+			                android:paddingTop="5dp"
+			                android:layout_gravity="center_vertical"
+			                android:text="13-05-05 12:12"
+			                android:textSize="8sp" />
+			        </LinearLayout>
+			    </LinearLayout>
+			
+			    <LinearLayout
+			        android:layout_width="fill_parent"
+			        android:layout_height="5dp" >
+			        <ImageView
+			            android:layout_width="wrap_content"
+			            android:layout_height="5dp"
+			            android:layout_marginLeft="20dp"
+			            android:layout_marginRight="20dp"
+			            android:contentDescription="@string/common_partition_h_live"
+			            android:src="@drawable/partition_h_line" />
+			    </LinearLayout>
+			</LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 底部工具栏 -->
+    <LinearLayout
+        android:id="@+id/Layout_detail_panelBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home_bottom"
+        android:baselineAligned="false"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/TextView_panelBottom_detail_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:paddingTop="18dp"
+            android:text="@string/detail_favorites"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/TextView_panelBottom_detail_addto_this_trip"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="2.0"
+            android:gravity="center_horizontal"
+            android:paddingTop="18dp"
+            android:text="@string/add_this_trip"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/TextView_panelBottom_detail_share"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:paddingTop="18dp"
+            android:text="@string/detail_share"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</RelativeLayout>

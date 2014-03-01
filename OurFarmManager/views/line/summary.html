@@ -1,0 +1,538 @@
+  <% include ../header.html %>
+      <style>
+		span.describe {
+		  display:block;
+          width: 300px;
+		  text-overflow: ellipsis;
+		  overflow:hidden;
+		}
+		
+		a.btn-small {
+		  margin-bottom: 4px;
+		}
+		
+		.modal{
+		  width: 380px;
+		}
+		
+		form#edit {
+		  margin: 1px
+		}
+		
+		.play_controls {
+		  margin-left:2px;
+		}
+		
+		.play_controls input {
+		  margin: 2px 3px;
+		}
+		
+		form#edit .control-group {
+		  margin-bottom: 2px;
+		}
+		
+		form#edit .control-label {
+		  width: 60px;
+		}
+		
+		.edit-line {
+		  margin-left: 80px;
+		}
+		
+		.mini-layout {
+		    margin-bottom: 20px;
+		    padding: 9px;
+		}
+		.mini-layout, .mini-layout .mini-layout-body, .mini-layout.fluid .mini-layout-sidebar {
+		    height: 300px;
+		}
+		.mini-layout {
+		    border: 1px solid #DDDDDD;
+		    border-radius: 6px 6px 6px 6px;
+		    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+		}
+		
+		.mini-layout.fluid .mini-layout-sidebar {
+		    background-color: #BBD8E9;
+		    width: 20%;
+		}
+		.mini-layout.fluid .mini-layout-sidebar, .mini-layout.fluid .mini-layout-header, .mini-layout.fluid .mini-layout-body {
+		    float: left;
+		}
+		.mini-layout, .mini-layout .mini-layout-body, .mini-layout.fluid .mini-layout-sidebar {
+		    height: 300px;
+		}
+		.mini-layout div {
+		    border-radius: 3px 3px 3px 3px;
+		}
+		
+		.mini-layout.fluid .mini-layout-body {
+		    margin-right: 2.5%;
+		    width: 77.5%;
+		}
+		.mini-layout .mini-layout-body {
+		    background-color: #DCEAF4;
+		    margin: 0 auto;
+		    width: 70%;
+		}
+		
+		.mini-layout-body .row-fluid {
+		  margin:4px;
+		  padding:2px;
+		}
+		
+		.add_play {
+		  margin: 10px auto 0px auto;
+		  height: 200px;
+		  overflow: auto;
+		  position: relative;
+		}
+		
+		.add_play .input-prepend {
+		  margin: 1px 0px 0px 30px;
+		}
+		
+		.add_begin, .add_end {
+		  background-color: #BBD8E9;
+		}
+		
+      </style>
+    </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <% include ../navbar.html %>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="2%">Id </th>
+                  <th width="6%">第几站</th>
+                  <th width="8%">起点Id</th>
+                  <th width="10%">起点名称</th>
+                  <th width="8%">目的地Id</th>
+                  <th width="10%">目的地名称</th>
+                  <th>路线信息</th>
+                  <th>游玩信息</th>
+                  <th width="6%">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+               <% results.rows.forEach(function(result, index) { %>
+	              <tr>
+	                <td><%= result.itinerary_id %></td>
+	                <td><%= result.step_num %></td>
+	                <td><%= result.start_destination_id %></td>
+	                <td><%= result.start_destination_name %></td>
+	                <td><%= result.end_destination_id %></td>
+	                <td><%= result.end_destination_name %></td>
+	                <td><span class="describe"><%= result.line_content%></span></td>
+	                <td><span class="describe"><%= result.content %></span></td>
+	                <td>
+	                  <a class="btn btn-small btn-success" href="#">修改</a>
+	                </td>
+	              </tr>
+	            <%}) %>
+                
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <p style="margin: 0 0 10px; float: right; width:200px;">
+	    <button id="add_summary" class="btn btn-large btn-primary" type="button">增加</button>
+	    <a id="del_summary" role="button" data-toggle="modal" class="btn btn-large btn-danger delModal" href="#">删除</a>
+	  </p>
+	  <hr style="clear:both;">
+	  
+	  <div id="edit_summary" class="add_edit_summary hide ">
+		  <p><h4>增加/修改路线概要信息</h4>
+	      <div class="mini-layout fluid">
+	        <div class="mini-layout-body">
+	          <div class="row-fluid">
+			    <div class="span4">
+			      <span class="label label-info"><i class="icon-flag icon-white"></i>站数</span> 
+			      <span id="which_station" class="badge badge-success"></span>
+			    </div>
+			  </div>
+	          <div class="row-fluid">
+			    <div class="span6">
+			      <span class="add-on"><i class="icon-play"></i></span>
+			      <span id="start_id" class="badge badge-warning"></span>
+			      <span id="start_name" class="badge badge-warning"></span>
+			    </div>
+			    <div class="span6">
+			      <span class="add-on"><i class=" icon-stop"></i></span>
+			      <span id="end_id" class="badge badge-important"></span>
+			      <span id="end_name" class="badge badge-important"></span>
+			    </div>
+			  </div>
+	          <div class="row-fluid">
+			    <div class="span6">
+                  <strong>路线信息</strong><br>
+                  <textarea id="line_info" style="width: 380px; float: left; margin: 0 0 2px 2px;" id="edit_introduction" rows="7"></textarea>
+                </div>
+			    <div class="span6">
+                  <strong>游玩信息</strong> 
+			      <textarea id="play_info" style="width: 380px; float: left; margin: 0 0 2px 2px;" id="edit_introduction" rows="7"></textarea>
+			    </div>
+			    <button id="edit_summary_ok" class="btn btn-primary" type="button" style="float: right;margin:5px 40px 0 0;">确认</button>
+			    <button id="edit_summary_cancle" class="btn " type="button" style="float: right;margin:5px 5px 0 0;">取消</button>
+			  </div>
+	        </div>
+	        <div class="mini-layout-sidebar">
+	          <div class="row-fluid">
+			    <div class="span4">
+			      <span class="label label-info"><i class="icon-picture icon-white"></i>景点</span> 
+			    </div>
+			  </div>
+	          <div class="row-fluid">
+	            <form class="form-search" style="margin: 0 2px 0 30px">
+			      <div class="input-append">
+					<input type="text" class="span6 search-query">
+					<button type="button" class="btn">查询</button>
+				  </div>
+				</form>
+			  </div>
+	          <div class="row-fluid">
+	            <div class="add_play" data-spy="scroll" data-offset="0">
+			    </div>
+			  <div class="row-fluid">
+			    <button id="add_destination" class="btn btn-mini btn-primary" type="button" style="margin:3px 30%">增加景点</button>
+			  </div>
+	        </div>
+	      </div>
+	  </div>
+	  
+	  <div id="delModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="delModalLabel">确定要删除该记录吗?</h3>
+		</div>
+		<div class="modal-footer">
+		  <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+		  <button id="delete" class="btn btn-primary">确定</button>
+		</div>
+	  </div>
+
+    <div style="width: 240px; margin: 0px 40%;"  class="alert fade in">
+       <button data-dismiss="alert" class="close" type="button">×</button>
+       <strong></strong>
+    </div>
+	<% include ../footer.html %>
+	
+	<script>
+	  $(document).ready(function(){
+	    activityNav(2);
+		$(".alert").hide();
+		
+		var lineId = '<%=results.id %>';
+		var addOrEdit = "";
+		var tr;
+		//点击增加概要路线
+		$('#add_summary').click(function() {
+			addOrEdit = "add";
+			$("#edit_summary").fadeIn('slow');
+			//滚动条向下滚动到底端
+			/*
+			if(getCcrollTop() > 0) {
+				$(document).scrollTop(getCcrollTop() + 370);
+			}
+			*/
+			$("html,body").animate({scrollTop:$("#line_info").offset().top},'slow');
+			//以添加的概要路线数目
+			var summaryLength = $('tbody tr').size();
+			if(summaryLength > 0) {
+				clearupSummary()
+				//站数增加一
+				$('#which_station').text($('tbody tr:last-child td:eq(1)').text() - 0 + 1);
+				$('#start_id').text($('tbody tr:last-child td:eq(4)').text());
+				$('#start_name').text($('tbody tr:last-child td:eq(5)').text());
+			} else {
+				clearupSummary();
+				$('#which_station').text('1');
+			}
+		});
+		
+		//情况下方概要信息编辑框
+		function clearupSummary() {
+			$('#which_station').text("");
+			$('#start_id').text("");
+			$('#start_name').text("");
+			$('#end_id').text("");
+			$('#end_name').text("");
+			$('#line_info').val("");
+			$('#play_info').val("");
+		}
+		//取消修改或增加
+		$('#edit_summary_cancle').click(function() {
+			hiddenEditSummary();
+		});
+		
+		//查询景点
+		$('.form-search button').click(function(){
+			var playName = $('.form-search input').val();
+			if($.trim(playName) == "") {
+				operateFailure("请输入你要查询的景点名字!");
+				return;
+			}
+			
+			$.ajax({
+                data: {inputName: playName},
+                url: '/home/play/name',
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function(response){
+                    //没有查询到数据
+                   	if(response.length == 0) {
+                   		operateFailure("没有查询到您要的景点，请添加!");
+                        $("div.add_play").html("");
+                	} else {
+                		var rowHtml = "";
+                      	for(var i = 0; i < response.length; i++) {
+                      		var row = response[i];
+                      		rowHtml += '<div class="input-prepend input-append"> ' +
+                      		'  <span class="label add_begin"><i class="icon-upload"></i></span>' +
+                      		'  <span class="badge badge-success">'+ row.name + '</span>' +
+                      		'  <span class="label add_end"><i class=" icon-download"></i></span>' +
+                      		'  <input type="hidden" value="'+ row.destination_id + '"></input>' +
+                      		'</div>';
+                      	}
+                      	$("div.add_play").html(rowHtml);
+                	}
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                	operateFailure("没有查询到您要的景点，请添加!");
+                    $("div.add_play").html("");
+                }
+            });
+		});
+		
+		//设置起点景点
+        $(document).on('click', '.add_begin', function(e) {
+        	var destinationId = $('input', $(this).parent()).val();
+        	var destinationName = $('span:eq(1)', $(this).parent()).text();
+        	$('#start_id').text($('input', $(this).parent()).val());
+			$('#start_name').text($('span:eq(1)', $(this).parent()).text());
+        });
+		//设置终点景点
+        $(document).on('click', '.add_end', function(e) {
+        	var destination_id = $('input', $(this).parent()).val();
+        	$('#end_id').text($('input', $(this).parent()).val());
+			$('#end_name').text($('span:eq(1)', $(this).parent()).text());
+        });
+		
+		//修改按钮
+        $(document).on('click', 'tr td a', function(e) {
+        	addOrEdit = "edit";
+        	showEditSummary();
+			
+        	tr = $(this).closest('tr');
+        	
+      	    $("#which_station").text($("td:eq(1)", tr).text());
+      	    $("#start_id").text($("td:eq(2)", tr).text());
+      	    $("#start_name").text($("td:eq(3)", tr).text());
+      	    $("#end_id").text($("td:eq(4)", tr).text());
+      	    $("#end_name").text($("td:eq(5)", tr).text());
+      	    $("#line_info").val($("td:eq(6) span", tr).text());
+      	    $("#play_info").val($("td:eq(7) span", tr).text());
+        });
+        
+		//增加/编辑路线概要确认
+        $('#edit_summary_ok').click(function(){
+        	if(checkUpdateSummaryError()){
+        		return operateFailure("数据录入不完备!");
+        	}
+            
+        	var params = {
+        	  'itinerary_id': lineId,
+        	  'step_num': $('#which_station').text(),
+        	  'start_destination_id': $('#start_id').text(),
+        	  'start_destination_name': $('#start_name').text(),
+        	  'end_destination_id': $('#end_id').text(),
+        	  'end_destination_name': $('#end_name').text(),
+        	  'line_content': $('#line_info').val(),
+        	  'content': $('#play_info').val()
+        	}
+        	//增加
+        	if(addOrEdit == 'add') {
+        		$.ajax({
+                    data: params,
+                    url: '/home/line/summary/add',
+                    type: 'post',
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 5000,
+                    success: function(response){
+	                  	if(response == "success") {
+	                  	  var addRow = "<tr>" + 
+		                  	"   <td>" + params.itinerary_id + "</td> " +
+		                  	"   <td>" + params.step_num + "</td> " +
+		                  	"   <td>" + params.start_destination_id + "</td> " +
+		                  	"   <td>" + params.start_destination_name + "</td> " +
+		                  	"   <td>" + params.end_destination_id + "</td> " +
+		                  	"   <td>" + params.end_destination_name + "</td> " + 
+		                  	"   <td><span class='describe'>" + params.line_content + "</span></td> " +
+		                  	"   <td><span class='describe'>" + params.content + "</span></td> " +
+		                  	"   <td> " +
+		                  	"     <a class='btn btn-small btn-success' href='#'>修改</a> " +
+		                  	"   </td> " +
+		                  	" </tr>";
+		                  
+		                  hiddenEditSummary();
+		                  $('table').append(addRow);
+	                  	  operateSuccess("增加成功!");
+	                  	  
+	                  	  updateLineOfSummary(params.itinerary_id, getSummaryStr());
+	                  	} else {
+	                  	  operateFailure("增加失败!");
+	                  	}
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                      alert('增加数据失败： ' + textStatus + " " + errorThrown);  
+                    }
+                });
+        	} else if(addOrEdit == 'edit') {//修改
+        		$.ajax({
+                    data: params,
+                    url: '/home/line/summary/edit',
+                    type: 'post',
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 5000,
+                    success: function(response){
+	                  	if(response == "success") {
+	                  	  $("td:eq(2)", tr).text($('#start_id').text());
+	                  	  $("td:eq(3)", tr).text($('#start_name').text());
+	                  	  $("td:eq(4)", tr).text($('#end_id').text());
+	                  	  $("td:eq(5)", tr).text($('#end_name').text());
+	                  	  $("td:eq(6) span", tr).text($('#line_info').val());
+	                  	  $("td:eq(7) span", tr).text($('#play_info').val());
+	                  	  
+	                  	  hiddenEditSummary();
+	                  	  operateSuccess("修改成功!");
+	                  	  
+	                  	  updateLineOfSummary(params.itinerary_id, getSummaryStr());
+	                  	} else {
+	                  	  operateFailure("修改失败!");
+	                  	}
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                      alert('修改数据失败： ' + textStatus + " " + errorThrown);  
+                    }
+                });
+        	}
+        });
+		
+        //删除路线概要
+        $('#del_summary').click(function(){
+        	if($('table tr').size() == 1) {
+        		operateFailure("无数据可删除!");
+        		return;
+        	}
+            var lastTr = $('table tr:last');
+            var params = {
+                'itinerary_id': lineId,
+                'step_num': $('td:eq(1)', lastTr).text(),	
+            };
+            
+        	$.ajax({
+                data: params,
+                url: '/home/line/summary/del',
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function(response){
+	              	if(response == "success") {
+	              	  operateSuccess("删除成功!");
+	                    
+	                  $(lastTr).remove();
+	                  
+	                  updateLineOfSummary(lineId, getSummaryStr());
+	              	} else {
+	              	  operateFailure("删除失败!");
+	              	}
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                  alert('删除数据失败： ' + textStatus + " " + errorThrown);  
+                }
+            });
+        });
+        
+        $('#add_destination').click(function(){
+        	window.open('/home/play', "returnPlayWindow");
+        });
+        
+        //更新路线中的itinerary_summary字段
+        function updateLineOfSummary(itinerary_id, itinerary_summary) {
+        	$.ajax({
+                data: {'itinerary_id':itinerary_id, 'itinerary_summary':itinerary_summary},
+                url: '/home/line/updatesummary',
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function(response){
+	              	if(response == "success") {
+	              	  operateSuccess("itinerary_summary字段更新成功!");
+	              	} else {
+	              	  operateFailure("itinerary_summary字段更新失败!");
+	              	}
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                  alert('itinerary_summary字段更新数据失败： ' + textStatus + " " + errorThrown);  
+                }
+            });
+        }
+        
+        //检查录入数据是否合理
+        function checkUpdateSummaryError() {
+        	return $('#start_id').text() == "" ||
+			    $('#start_name').text() == "" ||
+			    $('#end_id').text() == "" ||
+			    $('#end_name').text() == "" ||
+			    $('#line_info').val() == "" ||
+			    $('#play_info').val() == "";
+        }
+        
+        //隐藏下方的编辑内容
+        function hiddenEditSummary() {
+        	$("#edit_summary").fadeOut('slow');
+			//滚动条向上滚动
+			if(getCcrollTop() > 0) {
+				$(document).scrollTop(getCcrollTop() - 370); 
+			}
+			clearupSummary();
+        }
+        
+        //显示下方的编辑内容
+        function showEditSummary() {
+        	$("#edit_summary").fadeIn('slow');
+			//滚动条向下滚动
+			/*if(getCcrollTop() > 0) {
+				$(document).scrollTop(getCcrollTop() + 370); 
+			}
+			*/
+			$("html,body").animate({scrollTop:$("#line_info").offset().top},'slow');
+			clearupSummary();
+        }
+        
+        //拼接itinerary中的itinerary_summary字符串
+        function getSummaryStr() {
+        	var trs = $('table tbody tr');
+        	var summaryStr = "";
+        	for(var i = 0; i < trs.size(); i++) {
+        		if(i == 0) {
+	        		summaryStr +=  $('td:eq(3)',trs[i]).text() + '-> ' + $('td:eq(5)',trs[i]).text()
+        		} else {
+        			summaryStr += '-> ' + $('td:eq(5)',trs[i]).text()
+        		}
+        	}
+        	
+        	return summaryStr;
+        }
+        
+	  });
+	</script>

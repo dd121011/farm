@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/common_heat_power"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map" />
+    </LinearLayout>
+
+	<com.f5.ourfarm.layout.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/main_pull_refresh_view"
+	    android:layout_width="wrap_content"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@+id/toppanel"
+	    android:orientation="vertical" >    
+	    <ScrollView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/toppanel" >
+	
+	        <!-- listview -->
+	        <LinearLayout
+	            android:id="@+id/ListView_main"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	        </LinearLayout>
+	    </ScrollView>
+	</com.f5.ourfarm.layout.PullToRefreshView>
+
+</RelativeLayout>

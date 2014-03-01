@@ -1,0 +1,629 @@
+  <% include ../header.html %>
+      <style>
+        .jumbotron {
+	        margin: 10px 0;
+	        text-align: center;
+	    }
+	    
+	    #search_controls {
+	      margin: 2px 0px;
+	    }
+	    
+		span.describe {
+		  display:block;
+		  height: 60px;
+          width: 300px;
+		  text-overflow: ellipsis;
+		  overflow:hidden;
+		}
+		
+		a.btn-small {
+		  margin-bottom: 4px;
+		}
+		
+		.modal{
+		  width: 380px;
+		}
+		
+		form#edit {
+		  margin: 1px
+		}
+		
+		.play_controls {
+		  margin-left:2px;
+		}
+		
+		.play_controls input {
+		  margin: 2px 3px;
+		}
+		
+		form#edit .control-group {
+		  margin-bottom: 0px;
+		}
+		
+		#add_play {
+		  float: right;
+		  margin-right: 130px;
+		}
+		
+      </style>
+    </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <% include ../navbar.html %>
+  
+    <form id="/home/play/search" class="form-horizontal">
+	  <div class="control-group">
+	    <label class="control-label" for="inputName">名字</label>
+	    <div class="controls">
+	      <input type="text" id="inputName" placeholder="景点名字">
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label" for="inputDescribe">描述</label>
+	    <div class="controls">
+	      <input type="text" id="inputDescribe" placeholder="景点描述">
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label" for="inputIdStart">Id范围</label>
+	    <div class="controls">
+	      <input type="text" id="inputMinId" class="span1" placeholder="0">
+	      &#151;
+	      <input type="text" id="inputMaxId" class="span1" placeholder="20">
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <div class="controls">
+	      <button type="button" id="search" class="btn btn-primary">查询</button>
+	      <a id="add_play" role="button" data-toggle="modal" class="btn btn-large btn-primary editModal" href="#editModal">增加</a>&nbsp;&nbsp;
+	    </div>
+	  </div>
+	</form>
+	
+    <div style="width: 200px; margin: 0px 40%;"  class="alert fade in">
+       <button data-dismiss="alert" class="close" type="button">×</button>
+       <strong></strong>
+    </div>
+    <div class="container">
+      <hr>
+      <div class="row">
+        <div class="span12">
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="5%">Id </th>
+                  <th width="5%">名称</th>
+                  <th width="20%">地址</th>
+                  <th width="300px">描述</th>
+                  <th width="10%">电话</th>
+                  <th width="12%">门票</th>
+                  <th width="5%">纬度</th>
+                  <th width="5%">经度</th>
+                  <th width="8%">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+               <% results.forEach(function(result, index) { %>
+	              <tr>
+	                <td><%= result.destination_id %></td>
+	                <td><%= result.name %></td>
+	                <td><%= result.address %></td>
+	                <td><span class="describe"><%= result.introduction %></span></td>
+	                <td><%= result.tel %></td>
+	                <td><%= result.price_info %></td>
+	                <td><%= result.lat %></td>
+	                <td><%= result.lng %></td>
+	                <td><a role="button" data-toggle="modal" class="btn btn-small btn-success" href="#editModal">修改</a>&nbsp;&nbsp; 
+	                    <a role="button" data-toggle="modal" class="btn btn-small btn-danger" href="#delModal">删除</a>
+	                </td>
+	                <input type="hidden" value="<%= result.score %>" />
+	                <input type="hidden" value="<%= result.preferential_info %>" />
+	              </tr>
+	            <%}) %>
+                
+              </tbody>
+            </table>
+        </div>
+      </div>
+      
+      <div class="jumbotron">
+        <a class="btn btn-inverse" href="javascript:void(0);" style="display: none;">上一页</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-inverse" href="javascript:void(0);" style="display: none;">下一页</a>
+      </div>
+      <input type="hidden" id="operate_id" value="" />
+      
+      <div id="editModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		  <h3 id="editModalLabel">景点信息</h3>
+		</div>
+		<div class="modal-body">
+		  <form id="edit" class="form-horizontal">
+			  <div class="control-group">
+			    <img style="width: 100px;heigth: 100px;float: left; margin: 0 0 2px 2px;" alt="Responsive devices" src="/images/play/home_placeholder_pic.png">
+			    <div class="play_controls">
+			      <input type="text" id="edit_name" placeholder="名称">
+			      <input type="text" id="edit_hot" placeholder="热度">
+			      <input type="text" id="edit_price" placeholder="价格">
+			    </div>
+			  </div>
+			  <img style="" alt="Responsive devices" src="/images/play/partition_h_line.png">
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <img style="float: left; margin: 0 0 2px 2px;" alt="Responsive devices" src="/images/play/detail_map.png">
+			      <input style="margin-left:15px;margin-right:20px;width: 200px;" type="text" id="edit_address" placeholder="">
+			      <img style="width: 10px;heigth: 10px; float: right; margin: 10px 2px 0px 2px;" alt="Responsive devices" src="/images/play/home_right_arrows.png">
+			    </div>
+			  </div>
+			  <img style="" alt="Responsive devices" src="/images/play/partition_h_line.png">
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <img style="float: left; margin: 0 0 2px 2px;" alt="Responsive devices" src="/images/play/detail_tel.png">
+			      <input style="margin-left:15px;margin-right:20px;width: 200px;" type="text" id="edit_tel" placeholder="">
+			      <img style="width: 10px;heigth: 10px; float: right; margin: 10px 2px 0px 2px;" alt="Responsive devices" src="/images/play/home_right_arrows.png">
+			    </div>
+			  </div>
+			  <img style="" alt="Responsive devices" src="/images/play/partition_h_line.png">
+			  
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" id="showName" style="float: left;" for="edit_introduction">景点描述</label>
+			      <br>
+			      <div class="play_controls">
+			        <textarea style="width: 320px;float: left; margin: 0 0 2px 2px;" id="edit_introduction" cols="30" rows="10"></textarea>
+			      </div>
+			    </div>
+			  </div>
+			  <img style="" alt="Responsive devices" src="/images/play/partition_h_line.png">
+			  
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_preferential_info">优惠信息</label>
+			      <br>
+			      <div class="play_controls">
+			        <textarea style="width: 320px;float: left; margin: 0 0 2px 2px;" id="edit_preferential_info" cols="30" rows="2"></textarea>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_lat">纬度</label>
+			      <input style="float: left;margin-left:28px;margin-right:2px;width: 240px;" type="text" id="edit_lat" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_lng">经度</label>
+			      <input style="float: left;margin-left:28px;margin-right:2px;width: 240px;" type="text" id="edit_lng" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_pic">简介图</label>
+			      <input style="float: left;margin-left:15px;margin-right:2px;width: 240px;" type="text" id="edit_pic" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_phone">手机</label>
+			      <input style="float: left;margin-left:28px;margin-right:2px;width: 240px;" type="text" id="edit_phone" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_other_contact">其他方式</label>
+			      <input style="float: left;margin-left:0px;margin-right:2px;width: 240px;" type="text" id="edit_other_contact" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_score">分数</label>
+			      <input style="float: left;margin-left:28px;margin-right:2px;width: 240px;" type="text" id="edit_score" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_region_code">邮编</label>
+			      <input style="float: left;margin-left:28px;margin-right:2px;width: 240px;" type="text" id="edit_region_code" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_price_info">价格信息</label>
+			      <input style="float: left;margin-left:0px;margin-right:2px;width: 240px;" type="text" id="edit_price_info" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_car">自驾路线</label>
+			      <br>
+			      <div class="play_controls">
+			        <textarea style="width: 320px;float: left; margin: 0 0 2px 2px;" id="edit_car" cols="30" rows="2"></textarea>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_bus">公交车</label>
+			      <br>
+			      <div class="play_controls">
+			        <textarea style="width: 320px;float: left; margin: 0 0 2px 2px;" id="edit_bus" cols="30" rows="2"></textarea>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_bike">步行</label>
+			      <br>
+			      <div class="play_controls">
+			        <textarea style="width: 320px;float: left; margin: 0 0 2px 2px;" id="edit_bike" cols="30" rows="2"></textarea>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_characteristic">经典特色</label>
+			      <input style="float: left;margin-left:0px;margin-right:2px;width: 240px;" type="text" id="edit_characteristic" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_classic_flag">是否经典</label>
+			      <input style="float: left;margin-left:0px;margin-right:2px;width: 240px;" type="text" id="edit_classic_flag" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_map_pic">地图图片</label>
+			      <input style="float: left;margin-left:0px;margin-right:2px;width: 240px;" type="text" id="edit_map_pic" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_preferential_info">优惠信息</label>
+			      <input style="float: left;margin-left:0px;margin-right:2px;width: 240px;" type="text" id="edit_preferential_info" placeholder="">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="play_controls">
+			      <label class="" style="float: left;" for="edit_type">类型</label>
+			      <input style="float: left;margin-left:28px;margin-right:2px;width: 240px;" type="text" id="edit_type" placeholder="">
+			    </div>
+			  </div>
+	      </form>
+		</div>
+		<div class="modal-footer">
+		  <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		  <button id="edit_save" class="btn btn-primary" >保存</button>
+		</div>
+	  </div>
+	  
+	  <div id="delModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="delModalLabel">确定要删除该记录吗?</h3>
+		</div>
+		<div class="modal-footer">
+		  <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+		  <button id="delete" class="btn btn-primary">确定</button>
+		</div>
+	  </div>
+
+    <hr>
+	
+	<% include ../footer.html %>
+	<script src="/javascripts/destination.js"></script>
+	<script>
+	  activityNav(1);
+	  //用于计算翻页次数
+	  var loadPage = 0;
+	  var loadCount = 0;
+	  if('<%=results%>') {
+		  loadCount = '<%=results.length%>' - 0;
+	  }
+	  //下拉时，自动加载
+	  (function() {
+		  $(".alert").hide();
+
+		  function checkScroll() {
+		    if (!lowEnough()) return pollScroll();
+
+		    //一页最多显示100条记录
+		    if(Math.ceil(loadCount/20) > 4) {
+		    	$('.jumbotron a:eq(1)').show("slow");
+		    	//第一页时候，不能上翻
+		    	if(loadPage > 0) {
+		          $('.jumbotron a:eq(0)').show("slow");
+		    	} else {
+		          $('.jumbotron a:eq(0)').hide("fast");
+		    	}
+		        return;	
+		    }
+		    
+            $.ajax({
+                data: getParamas(),
+                url: '/home/play/scrolload',
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function(response){
+                	$("table.table-striped tbody").append(addResponseData(response));
+                    loadCount = loadCount + response.length;
+                	//如果返回的不是20条，并且不是第一页，只显示“上一页”
+                	if(response.length < 20 && loadPage != 0) {
+                		$('.jumbotron a:eq(0)').show("slow");
+                		return;
+                	}
+                    pollScroll();
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    //alert('加载数据失败： ' + textStatus + " " + errorThrown);  
+                }
+            });
+            
+		  }
+		  
+		  function pollScroll() {
+			  setTimeout(checkScroll, 100); 
+	      }
+		  pollScroll();
+		  
+		  //点击上一页
+		  $('.jumbotron a:eq(0)').click(function() {
+			  loadPage--;
+			  loadCount = 0;
+			  searchPlay(getParamas(), 'up');
+		  });
+		  //点击下一页
+		  $('.jumbotron a:eq(1)').click(function() {
+			  loadPage++;
+			  loadCount = 0;
+			  searchPlay(getParamas(), 'down');
+		  });
+		  
+		  //搜索按钮
+          $('#search').click(function() {
+        	  loadPage = 0;
+			  loadCount = 0;
+			  searchPlay(getParamas(), 'search');
+          });
+		  //增加按钮
+          $('#add_play').click(function() {
+        	  $("#operate_id").val("");
+        	  if(clearPlayEdit) {
+          	    $("#editModal input[type='text']").val("");
+        	    $("#editModal textarea").val("");
+        	  }
+          });
+		  
+		  //要编辑的那行元素
+          var tr;
+		  //判断是否清空弹出框的输入值
+		  var clearPlayEdit = true;
+		  //编辑按钮
+          $(document).on('click', 'a.btn-success,a.btn-danger', function(e) {
+        	  tr = $(this).parent().parent();
+        	  
+        	  $("#operate_id").val($("td:eq(0)", tr).text());
+        	  
+        	  if($(this).hasClass('btn-success')) {
+        		  editInit();
+        		  clearPlayEdit = true;
+        	  }
+        	  return;
+        	  //window.open ('/home/play/edit/' + id, 'editPlay', 'height=640, width=400, top=100, left=400, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+          });
+		  
+		  //修改初始页面
+		  function editInit() {
+			  $.ajax({
+	                data: {},
+	                url: '/home/' + $("#operate_id").val() + '/play',
+	                type: 'post',
+	                dataType: 'json',
+	                cache: false,
+	                timeout: 5000,
+	                success: function(response){
+	                    //没有查询到数据
+	                   	if(response.length == 0) {
+	                   		operateFailure("没有查询到您要的景点，请添加!");
+	                	} else {
+	                	    var row = response[0];
+	                	    for(var key in row) {
+	                	    	$("#edit_" + key).val(row[key]);	
+	                	    }
+	                		$("#showName").text(row.name);
+	                	}
+	                },
+	                error: function(jqXHR, textStatus, errorThrown){
+	                	operateFailure("没有查询到您要的景点，请添加!");
+	                    $("div.add_play").html("");
+	                }
+	            });
+		  }
+		  
+		  //编辑保存按钮
+          $('#edit_save').click(function() {
+        	  $(this).attr("data-dismiss", "modal");
+        	  var paramas = {};
+        	  
+        	  for(var des in destinationPojo.getDestination()) {
+        		  paramas[des] = $.trim($('#edit_' + des).val());
+        	  }
+        	  //根据operate_id是否有值来判断是新增或修改
+        	  if($("#operate_id").val() == "") {
+        		  $.ajax({
+                      data: paramas,
+                      url: '/home/play/add',
+                      type: 'post',
+                      dataType: 'json',
+                      cache: false,
+                      timeout: 5000,
+                      success: function(response){
+                    	if(response.result == "success") {
+                    	  var row = {
+                    	      'destination_id': response.insertId,
+                    	      'name': $("#edit_name").val(),
+                    	      'address': $("#edit_address").val(),
+                    	      'introduction': $("#edit_introduction").val(),
+                    	      'tel': $("#edit_tel").val(),
+                    	      'price_info': $("#edit_price_info").val(),
+                    	      'lat': $("#edit_lat").val(),
+                    	      'lng': $("#edit_lng").val()
+                    	  }
+        	              var rows = [row];
+        	              $("tbody").prepend(addResponseData(rows));
+                    	  operateSuccess("新增景点成功!");
+                    	  clearPlayEdit = true;
+                    	} else {
+                    	  clearPlayEdit = false;
+                    	  operateFailure("新增景点失败!");
+                    	}
+                      },
+                      error: function(jqXHR, textStatus, errorThrown){
+                        alert('新增景点失败： ' + textStatus + " " + errorThrown);  
+                      }
+                  });
+        	  } else {
+	        	  $.ajax({
+	                  data: paramas,
+	                  url: '/home/play/edit/' + $("#operate_id").val(),
+	                  type: 'post',
+	                  dataType: 'json',
+	                  cache: false,
+	                  timeout: 5000,
+	                  success: function(response){
+	                	if(response == "success") {
+	                	
+	                	  $("td:eq(1)", tr).text($("#edit_name").val());
+	                	  $("td:eq(2)", tr).text($("#edit_address").val())
+	                	  $("td:eq(3)", tr).text($("#edit_introduction").val())
+	                	  $("td:eq(4)", tr).text($("#edit_tel").val())
+	                	  $("td:eq(5)", tr).text($("#edit_price").val())
+	                	  $("td:eq(6)", tr).text($("#edit_lat").val())
+	                	  $("td:eq(7)", tr).text($("#edit_lng").val())
+	                		
+	                	  $(".alert strong").text("修改成功!");
+				          $(".alert").removeClass("alert-error").addClass("alert-success").show("slow");
+	                      setTimeout(function(){$(".alert").hide("slow");}, 2000);
+	                	}
+	                  },
+	                  error: function(jqXHR, textStatus, errorThrown){
+	                    alert('修改数据失败： ' + textStatus + " " + errorThrown);  
+	                  }
+	              });
+        	  }
+          });
+		  //删除弹出框点击确认按钮
+          $('#delete').click(function() {
+        	  
+        	  $(this).attr("data-dismiss", "modal");
+        	  var paramas = {}
+        	  
+        	  $.ajax({
+                  data: paramas,
+                  url: '/home/play/del/' + $("#operate_id").val(),
+                  type: 'post',
+                  dataType: 'json',
+                  cache: false,
+                  timeout: 5000,
+                  success: function(response){
+                	if(response == "success") {
+                	  $(".alert strong").text("删除成功!");
+			          $(".alert").removeClass("alert-error").addClass("alert-success").show("slow");
+                      setTimeout(function(){$(".alert").hide("slow");}, 2000);
+                	}
+                	
+                	$(tr).remove();
+                	//减少了一行记录
+                	loadCount--;
+                  },
+                  error: function(jqXHR, textStatus, errorThrown){
+                    alert('删除数据失败： ' + textStatus + " " + errorThrown);  
+                  }
+              });
+          });
+		
+		  function getParamas() {
+			  return {
+				  inputName: $.trim($("#inputName").val()),
+				  inputDescribe: $.trim($("#inputDescribe").val()),
+				  inputMinId: $.trim($("#inputMinId").val()),
+				  inputMaxId: $.trim($("#inputMaxId").val()),
+	              loadCount: loadCount,
+	              loadPage: loadPage
+			  };
+		  }
+		  //查询景点
+		  function searchPlay(params, clicktype) {
+			  $.ajax({
+	                data: params,
+	                url: '/home/play/scrolload',
+	                type: 'post',
+	                dataType: 'json',
+	                cache: false,
+	                timeout: 5000,
+	                success: function(response){
+	                	if(response.length <= 0) {
+	                		$("table.table-striped tbody").html("");
+	                		return;
+	                	}
+	                	$("table.table-striped tbody").html(addResponseData(response));
+	                    loadCount = loadCount + response.length;
+	                    if(clicktype == "down"){
+	                    	//如果返回的不是20条，并且不是第一页，只显示“上一页”
+		                	if(response.length < 20 && loadPage != 0) {
+		                		$('.jumbotron a:eq(0)').show("slow");
+		                		$('.jumbotron a:eq(1)').hide("fast");
+		                		return;
+		                	}
+	                    }
+	                    //没有查询到数据
+	                    if(clicktype == "search") {
+	                    	if(response.length < 20) {
+		                		$('.jumbotron a:eq(0)').hide();
+		                		$('.jumbotron a:eq(1)').hide();
+		                		return;
+		                	}
+	                    }
+	                    pollScroll();
+	                },
+	                error: function(jqXHR, textStatus, errorThrown){
+	                    //alert('没有查询到数据： ' + textStatus + " " + errorThrown);
+	                    $(".alert strong").text("没有查询到数据!");
+				        $(".alert").addClass("alert-error").show("slow");
+	                    setTimeout(function(){$(".alert").hide("slow");}, 2000);
+	                    
+	                    if(clicktype == "search") {
+	                    	$("table.table-striped tbody").html("");
+	                    }
+	                }
+	          }); 
+		  }
+		  
+          function addResponseData(res) {
+          	var rowHtml = "";
+          	for(var i = 0; i < res.length; i++) {
+          		var row = res[i];
+          		rowHtml += "<tr>" +
+          		"<td>" + row.destination_id + "</td>" +
+          		"<td>" + row.name + "</td>" +
+          		"<td>" + row.address + "</td>" +
+          		"<td><span class='describe'>" + row.introduction + "</span></td>" +
+          		"<td>" + row.tel + "</td>" +
+          		"<td>" + row.price_info + "</td>" +
+          		"<td>" + row.lat + "</td>" +
+          		"<td>" + row.lng + "</td>" +
+          		"<td>" +
+          		"  <a role='button' data-toggle='modal' class='btn btn-small btn-success' href='#editModal'>修改</a>&nbsp;&nbsp;" +
+          		"  <a role='button' data-toggle='modal' class='btn btn-small btn-danger' href='#delModal'>删除</a>" +
+          		"</td>" +
+          		"</tr>";
+          	}
+          	return rowHtml;
+          }
+          
+		})();
+	</script>

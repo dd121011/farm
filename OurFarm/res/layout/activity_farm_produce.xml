@@ -1,0 +1,224 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/LinearLayout_area_toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+
+        <TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/common_spherical"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_button_map"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_map" />
+    </LinearLayout>
+    
+    <!-- pictures -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/LinearLayout_area_toppanel"
+        android:orientation="vertical"
+        android:background="#EEEEEE" >
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="20dp">
+	
+	            <ImageView
+	                android:id="@+id/ImageView_farm_produce_pick"
+	                android:layout_width="96dp"
+	                android:layout_height="96dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:contentDescription="@string/produce_pick"
+	                android:src="@drawable/farm_produce_pick" />
+	
+	            <ImageView
+	                android:id="@+id/ImageView_farm_produce_market"
+	                android:layout_width="96dp"
+	                android:layout_height="96dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:contentDescription="@string/produce_market"
+	                android:src="@drawable/farm_produce_market" />
+	        </LinearLayout>
+        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" 
+	            android:layout_marginTop="10dp">
+	
+	            <TextView
+	                android:layout_width="48dp"
+	                android:layout_height="20dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:gravity="center_horizontal"
+	                android:text="@string/produce_pick"
+	                android:textColor="@color/black"
+	                android:textSize="16sp" />
+	
+	            <TextView
+	                android:layout_width="48dp"
+	                android:layout_height="20dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:gravity="center_horizontal"
+	                android:text="@string/produce_market"
+	                android:textColor="@color/black"
+	                android:textSize="16sp" />
+	        </LinearLayout>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+	        
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="20dp">
+	
+	            <ImageView
+	                android:id="@+id/ImageView_farm_produce_vegetable"
+	                android:layout_width="96dp"
+	                android:layout_height="96dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:contentDescription="@string/produce_vegetable"
+	                android:src="@drawable/farm_produce_vegetable" />
+	
+	            <ImageView
+	                android:id="@+id/ImageView_farm_produce_egg"
+	                android:layout_width="96dp"
+	                android:layout_height="96dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:contentDescription="@string/produce_egg"
+	                android:src="@drawable/farm_produce_egg" />
+	        </LinearLayout>
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" 
+	            android:layout_marginTop="10dp">
+	
+	            <TextView
+	                android:layout_width="48dp"
+	                android:layout_height="20dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:gravity="center_horizontal"
+	                android:text="@string/produce_vegetable"
+	                android:textColor="@color/black"
+	                android:textSize="16sp" />
+	
+	            <TextView
+	                android:layout_width="48dp"
+	                android:layout_height="20dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:gravity="center_horizontal"
+	                android:text="@string/produce_egg"
+	                android:textColor="@color/black"
+	                android:textSize="16sp" />
+	        </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="20dp">
+	
+	            <ImageView
+	                android:id="@+id/ImageView_farm_produce_fish"
+	                android:layout_width="96dp"
+	                android:layout_height="96dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:contentDescription="@string/produce_fish"
+	                android:src="@drawable/farm_produce_fish" />
+	
+	            <ImageView
+	                android:id="@+id/ImageView_farm_produce_duck"
+	                android:layout_width="96dp"
+	                android:layout_height="96dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:contentDescription="@string/produce_duck"
+	                android:src="@drawable/farm_produce_duck" />
+	        </LinearLayout>
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" 
+	            android:layout_marginTop="10dp">
+	
+	            <TextView
+	                android:layout_width="48dp"
+	                android:layout_height="20dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:gravity="center_horizontal"
+	                android:text="@string/produce_fish"
+	                android:textColor="@color/black"
+	                android:textSize="16sp" />
+	
+	            <TextView
+	                android:layout_width="48dp"
+	                android:layout_height="20dp"
+	                android:layout_marginLeft="16dp"
+	                android:layout_marginRight="16dp"
+	                android:layout_weight="1"
+	                android:gravity="center_horizontal"
+	                android:text="@string/produce_duck"
+	                android:textColor="@color/black"
+	                android:textSize="16sp" />
+	        </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

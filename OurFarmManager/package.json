@@ -1,0 +1,19 @@
+{
+  "name": "jiaoyouke", 
+  "main": "./app.js",
+  "private": true, 
+  "dependencies": {
+    "express": "3.0.5",
+    "ejs": ">=0.8.3",
+	"mysql": ">=2.0.0"
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*",
+    "rewire": "0.0.1",
+    "visionmedia-jscoverage": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  }
+}

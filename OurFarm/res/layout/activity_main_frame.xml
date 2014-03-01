@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+   
+  
+    
+    
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/toppanel"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/home_top" >
+
+        <include 
+	        android:id="@+id/ImageView_button_back"
+	        layout="@layout/back_menu"/>
+        
+		<TextView
+            android:id="@+id/TextView_toppanel_title"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/common_my"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_write_comment"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/button_write_comment"
+            />
+    </LinearLayout>
+    
+    
+    <LinearLayout
+        android:id="@+id/layout_my_item_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toppanel"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/activity_more_bg" 
+        android:orientation="vertical"
+        >
+    <!-- 我的收藏 -->
+    <LinearLayout
+        android:id="@+id/layout_my_favorite"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/activity_main_frame_bg" 
+        >
+        
+        <ImageView
+            android:id="@+id/ImageView_my_favorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="1dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/detail_favorites"
+            android:src="@drawable/active_more_colect" />
+                
+        <TextView
+            android:id="@+id/region_name"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="5dp"
+            android:text="@string/detail_favorites"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_area_right_arrows_1"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/common_arrows"
+            android:src="@drawable/home_right_arrows" />
+    </LinearLayout>
+
+    <!-- 我的本次行程 -->
+    <LinearLayout
+        android:id="@+id/layout_my_this_trip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/activity_main_frame_bg" >
+        
+        <ImageView
+            android:id="@+id/ImageView_this_trip"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="1dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/detail_favorites"
+            android:src="@drawable/active_more_trip" />
+                
+        <TextView
+            android:id="@+id/this_trip"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="5dp"
+            android:text="@string/detail_this_trip"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ImageView_area_right_arrows_2"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/common_arrows"
+            android:src="@drawable/home_right_arrows" />
+    </LinearLayout>
+
+<LinearLayout
+        android:id="@+id/layout_my_weibo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/activity_main_frame_bg" >
+        
+        <ImageView
+            android:id="@+id/ImageView_my_weibo"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="1dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/detail_favorites"
+            android:src="@drawable/active_more_weibo" />
+<TextView
+            android:id="@+id/weibo_name"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="5dp"
+            android:text="@string/more_band_sina"
+            android:textSize="15sp" />
+        <ImageView
+            android:id="@+id/more_image_weibo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/common_arrows"
+            android:src="@drawable/weibo_off" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_my_qq"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/activity_main_frame_bg" >
+        
+        <ImageView
+            android:id="@+id/ImageView_my_qq"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="1dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/detail_favorites"
+            android:src="@drawable/active_more_qq" />
+<TextView
+            android:id="@+id/qq_name"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="5dp"
+            android:text="@string/more_band_qq"
+            android:textSize="15sp" />
+        <ImageView
+            android:id="@+id/more_image_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="5dp"
+            android:contentDescription="@string/common_arrows"
+            android:src="@drawable/weibo_off" />
+
+    </LinearLayout>
+        </LinearLayout>
+    <!-- 底部工具栏 -->
+    <include 
+        android:id="@+id/Layout_home_panelBottom"
+        layout="@layout/footer"/>
+    
+</RelativeLayout>
